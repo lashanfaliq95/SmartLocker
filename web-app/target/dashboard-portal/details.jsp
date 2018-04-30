@@ -105,6 +105,7 @@
     <link href="css/updates.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="css/epoch.min.css">
     <link href="css/simple-sidebar.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -140,9 +141,6 @@
             <%@ include file="pages/details-page-Segments/deviceDetailsCard.jsp" %>
             <%@ include file="pages/details-page-Segments/mapSegment.jsp" %>
 
-            <div style=" position:absolute; bottom: 0;margin-left: 100px">
-                <%@ include file="pages/details-page-Segments/footerWSO2.jsp" %>
-            </div>
         </div>
 
 
@@ -168,7 +166,15 @@
                 <div class="tab-content">
                     <div id="realtime" class="tab-pane fade in active">
                         <%@ include file="pages/details-page-Segments/realTimeCardSegment.jsp" %>
+                        <%@ include file="pages/details-page-Segments/tab.jsp" %>
+                        <div class="tab-content">
+                        <div id="chartist" class="tab-pane fade in active">
                         <%@ include file="pages/details-page-Segments/realTimeChartSegment.jsp" %>
+                        </div>
+                        <div id="epoch" class="tab-pane fade">
+                            <%@ include file="pages/details-page-Segments/realTImeChartSegmentEpoch.jsp" %>
+                        </div>
+                        </div>
                     </div>
                     <div id="historical" class="tab-pane fade">
                         <%@ include file="pages/details-page-Segments/historicalChartsegment.jsp" %>
@@ -209,6 +215,9 @@
 <script type="text/javascript">
     var lastKnown = {};
 
+
+
+
     var deviceType="smartlocker";
 
     var typeParameter4="temperature";
@@ -238,6 +247,11 @@
     document.getElementById("title3").innerHTML = displayName3+ units3;
     document.getElementById("title4").innerHTML = displayName4+ units4;
     document.getElementById("title5").innerHTML = displayName5+ units5;
+    document.getElementById("title6").innerHTML = displayName1+ units1;
+    document.getElementById("title7").innerHTML = displayName2+ units2;
+    document.getElementById("title8").innerHTML = displayName3+ units3;
+    document.getElementById("title9").innerHTML = displayName4+ units4;
+    document.getElementById("title10").innerHTML = displayName5+ units5;
 
 
     document.getElementById("Htitle1").innerHTML = displayName1+ units1;
@@ -255,6 +269,8 @@
 
 
 
+
+
     $(document).ready(function () {
         $(document).ready(function () {
             var wsStatsEndpoint = "<%=pageContext.getServletContext().getInitParameter("websocketEndpoint")%>/secured-websocket/iot.per.device.stream.carbon.super."+deviceType+"/1.0.0?"
@@ -265,6 +281,7 @@
                 + "deviceId=<%=id%>&deviceType="+deviceType+"&websocketToken=<%=request.getSession(false).getAttribute(LoginController.ATTR_ACCESS_TOKEN)%>";
             displayAlerts(wsAlertEndpoint);
         });
+
     });
 
     //set device card details
@@ -272,7 +289,7 @@
     document.getElementById("devDetails").innerHTML = "Owned by " + "<%=enrolmentInfo.getString("owner")%>" + " and enrolled on " + "<%=new Date(enrolmentInfo.getLong("dateOfEnrolment")).toString()%>";
 
     //refresh graphs on click
-    document.getElementById("realtimeTab").addEventListener("click", realtimeGraphRefresh());
+   document.getElementById("realtimeTab").addEventListener("click", realtimeGraphRefresh);
     document.getElementById("historicalTab").addEventListener("click", historyGraphRefresh);
 
     //fix the issue of charts not rendering in historical tab
@@ -282,7 +299,9 @@
         });
     });
 
-
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
     var lastKnownSuccess = function (data) {
         var record = JSON.parse(data).records[0];
 
@@ -292,9 +311,7 @@
             var varOne = record.values[typeParameter1];
             var varTwo = record.values[typeParameter2];
             var varThree = record.values[typeParameter3];
-console.log(varOne);
-            console.log(varTwo);
-            console.log(varThree);
+
 
             updateStatusCards(sinceText, varOne, varTwo, varThree);
         } else {

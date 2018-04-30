@@ -169,6 +169,79 @@ realtimeAnalytics = {
         var realtimeChartFive = new Chartist.Line('#RealTimeChartFive', dataRealtimewChartFiveChart, optionsRealtimewChartFiveChart);
         md.startAnimationForLineChart(realtimeChartFive);
 
+  ////////////////////////////////////
+        var d = new Date();
+        var ChartDataOne = [
+            // First series
+            {
+                label: "Series 1",
+                values: [ {time: d.getTime()/1000, y:0}]
+            }
+        ];
+        var chartOne =  $('#lineChart').epoch({
+            type: 'time.line',
+            data: ChartDataOne,
+            axes: [ 'bottom', 'left','right'],
+            margins: { left: 40 ,top: 50}
+        });
+
+        var ChartDataTwo = [
+            // First series
+            {
+                label: "Series 1",
+                values: [ {time: d.getTime()/1000, y:0}]
+            }
+        ];
+        var chartTwo =  $('#lineChart1').epoch({
+            type: 'time.line',
+            data: ChartDataTwo,
+            axes: [ 'bottom', 'left','right'],
+            margins: { left: 40 ,top: 50}
+        });
+
+        var ChartDataThree = [
+            // First series
+            {
+                label: "Series 1",
+                values: [ {time: d.getTime()/1000, y:0}]
+            }
+        ];
+        var chartThree =  $('#lineChart2').epoch({
+            type: 'time.line',
+            data: ChartDataThree,
+            axes: [ 'bottom', 'left','right'],
+            margins: { left: 40 ,top: 50}
+        });
+
+        var ChartDataFour = [
+            // First series
+            {
+                label: "Series 1",
+                values: [ {time: d.getTime()/1000, y:0}]
+            }
+        ];
+        var chartFour =  $('#lineChart3').epoch({
+            type: 'time.line',
+            data: ChartDataFour,
+            axes: [ 'bottom', 'left','right'],
+            margins: { left: 40 ,top: 50}
+        });
+
+        var ChartDataFive = [
+            // First series
+            {
+                label: "Series 1",
+                values: [ {time: d.getTime()/1000, y:0}]
+            }
+        ];
+        var chartFive =  $('#lineChart4').epoch({
+            type: 'time.line',
+            data: ChartDataFive,
+            axes: [ 'bottom', 'left','right'],
+            margins: { left: 40 ,top: 50}
+        });
+
+
 
 
 
@@ -248,7 +321,27 @@ realtimeAnalytics = {
                     realtimewChartFiveSeries.push(varFive);
                     $("#realtimewChartFiveLastUpdated").html(lastUpdatedText);
 
+                   /////////////////////////////////
 
+                    var newBarChartDataOne = [{x: d.getTime()/1000, y:varOne}];
+                    console.log(d.getTime());
+                    chartOne.push(newBarChartDataOne);
+
+                    var newBarChartDataTwo = [{x: d.getTime()/1000, y:varTwo}];
+                    console.log(d.getTime());
+                    chartTwo.push(newBarChartDataTwo);
+
+                    var newBarChartDataThree = [{x: d.getTime()/1000, y:varThree}];
+                    console.log(d.getTime());
+                    chartThree.push(newBarChartDataThree);
+
+                    var newBarChartDataFour = [{x: d.getTime()/1000, y:varFour}];
+                    console.log(d.getTime());
+                    chartFour.push(newBarChartDataFour);
+
+                    var newBarChartDataFive = [{x: d.getTime()/1000, y:varFive}];
+                    console.log(d.getTime());
+                    chartFive.push(newBarChartDataFive);
 
                     updateGraphs();
                 };

@@ -26,13 +26,6 @@
         <div class="sidebar-wrapper">
             <%@ include file="pages/device-page-segments/serachBar.jsp" %>
 
-            <p class="copyright" style="position: absolute;bottom:0;padding-left: 100px">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                <a href="https://wso2.com/iot">WSO2 Inc.</a>
-            </p>
         </div>
     </div>
     <div class="main-panel">

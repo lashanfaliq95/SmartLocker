@@ -103,13 +103,6 @@
     </div>
 
 </div>
-<p class="copyright" style="position: absolute;bottom:20;padding-left: 100px;color: white">
-    &copy;
-    <script>
-        document.write(new Date().getFullYear())
-    </script>
-    <a href="https://wso2.com/iot">WSO2 Inc.</a>
-</p>
 </body>
 <script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>

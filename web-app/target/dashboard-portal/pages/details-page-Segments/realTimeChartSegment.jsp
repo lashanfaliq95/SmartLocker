@@ -1,7 +1,6 @@
 
-
         <div class="card real" id="chart1" onclick=redirect(this); style="height: 250px;">
-            <div class="card-header card-chart" data-background-color="red">
+            <div class="card-header card-chart" data-background-color="">
                 <div class="ct-chart ct-golden-section setheight" id="RealTimeChartOne"></div>
             </div>
             <div class="card-content">
@@ -76,6 +75,7 @@
             <div class="card-header card-chart" data-background-color="orange">
                 <div class="ct-chart ct-golden-section setheight"
                      id="RealTimeChartFive"></div>
+
             </div>
             <div class="card-content">
                 <h4 class="title" id="title5"></h4>
@@ -89,5 +89,7 @@
             </div>
         </div>
     </div>
-
 </div>
+
+
+
